@@ -10,31 +10,30 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 //Planning,Shopping,discount,package,warehouse,chat,settings
 function Tables() {
-  const[admin_data,set_admin_data]=useState([])
+  const[waiter_data,set_waiter_data]=useState([])
   const[status,set_status]=useState(Array(69).fill(["Delivery","red"]));
   const [name,set_name]=useState("");
   useEffect(()=>{
-   
-    axios.post("https://hotelloginbackend.onrender.com/api/final_order").then((res)=>{
-      console.log(res.data);
-      set_admin_data(res.data);
-    })
+     axios.get("http://localhost:8000/api/get_waiters").then((res)=>{
+      set_waiter_data(res.data);
+     })
+    
   },[status])
   function delete_user(id,table) {
-    set_admin_data(admin_data.filter((val,index,arr)=>{
+    set_waiter_data(waiter_data.filter((val,index,arr)=>{
       return index!=id;
     
     }))
-    axios.post("https://hotelloginbackend.onrender.com/api/delete_final_order",[table]);
+   
   }
   function refresh_table(params) {
-    axios.post("https://hotelloginbackend.onrender.com/api/final_order").then((res)=>{
-      console.log(res.data);
-      set_admin_data(res.data);
+    axios.get("http://localhost:8000/api/get_waiters").then((res)=>{
+     // console.log(res.data);
+      set_waiter_data(res.data);
     })
   }
   function completed_orders(params) {
-  set_admin_data(admin_data.filter((val,index,arr)=>{
+  set_waiter_data(waiter_data.filter((val,index,arr)=>{
     return status[index][1]!=="red";
   }))
   }
@@ -159,27 +158,19 @@ function Tables() {
                     >
                       ID
                     </th>
-                    <th scope="col">Table</th>{
+                    <th scope="col">Waiter</th>{
                       //This is a table and this is a index...
                     }
                     <th scope="col">Payment</th>
                     <th scope="col">Delete</th>
                     <th scope="col">Status</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Total</th>
-                    <th
-                      style={{
-                        borderTopRightRadius: '10px',
-                        borderBottomRightRadius: '10px',
-                      }}
-                      scope="col"
-                    >
-                      Action
-                    </th>
+                   
+                   
                   </tr>
                 </thead>
                 <tbody>
-                  {admin_data.map((val, index) => (
+                  {waiter_data.map((val, index) => (
                     <tr key={index} className="shadow-sm">
                       <th
                         style={{
@@ -189,17 +180,12 @@ function Tables() {
                         scope="row"
                         className="ps-4"
                       >
-                        #1234
+                       <img src={val.image} height="40px"/>
                       </th>
-                      <td>{val.amount2[0]}</td>
-                      <td>Cash</td>
-                      <td><MdDelete onClick={()=>delete_user(index,val.amount2[0])} style={{cursor:"pointer"}}/></td>
-                      <td>
-                        <span onClick={()=>{update_status(index)}} style={{color:status[index][1]}} className="badge badge-soft-danger1 mb-0">
-                          <i onClick={()=>{update_status(index)}} className="fa-regular fa-circle-dot">&nbsp;</i>
-                          {status[index][0]}
-                        </span>
-                      </td>
+                      <td>{val.name}</td>
+                      <td>{val.phone}</td>
+                      <td><MdDelete style={{cursor:"pointer"}}/></td>
+                     
                       <td>
                         <span className="badge text-bg-warning mb-0">
                           <i className="fa-regular fa-circle-dot">&nbsp;</i>
@@ -207,41 +193,11 @@ function Tables() {
                         </span>
                       </td>
                       <td>$12</td>
-                      <td
-                        style={{
-                          borderTopRightRadius: '10px',
-                          borderBottomRightRadius: '10px',
-                        }}
-                      >
-                        <Dropdown>
-                          <Dropdown.Toggle 
-                          
-                            variant="link" 
-                            id="dropdown-basic" 
-                            style={{ border: 'none', backgroundColor: 'transparent', padding: '0' }}
-                          >
-                            <BsThreeDotsVertical />
-
-                          </Dropdown.Toggle>
-                          <Dropdown.Menu>
-                          {/* <h4>Table{val.amount2}</h4> */ console.log("rmthiontrih"+val.amount2[0])}
-                            {
-                              
-                              val.amount.map((value,i,arr)=>{
-                                console.log("weijfbg"+value.title);
-                               
-                               return (<Dropdown.Item href="#/action-1">{value.title+" "+value.quantity}</Dropdown.Item> )
-                              })
-                            }
-                            
-                            
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      </td>
+                     
                     </tr>
                   ))}
                   {
-        !admin_data.length&&(
+        !waiter_data.length&&(
           <div className='no_order'>
           <h1>
           No Orders Yet!!
