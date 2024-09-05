@@ -10,7 +10,7 @@ function AddWaiter() {
   const handleClose = async() => {
     setShow(false);
    console.log(waiter_data);
-   await axios.post("http://localhost:8000/api/add_waiter",waiter_data)
+   await axios.post("https://hotelloginbackend.onrender.com/api/add_waiter",waiter_data)
   }
   const handleShow = () => setShow(true);
   const[waiter_data,set_waiter_data]=useState({
