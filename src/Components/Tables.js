@@ -143,7 +143,7 @@ function Tables() {
       <div className="main-content container-fluid" id="order-container">
         
         <div className="d-flex justify-content-between align-items-center mb-4">
-          <h2>Order History</h2>
+          <h2>Employee Details</h2>
         </div>
         <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li className="nav-item">
