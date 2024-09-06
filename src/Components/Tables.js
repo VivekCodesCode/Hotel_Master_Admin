@@ -190,7 +190,7 @@ function Tables() {
                         scope="row"
                         className="ps-4"
                       >
-                       <img src={val.image} height="40px"/>
+                       <img className='waiter_table_pimage' src={val.image} height="40px" width="40px"/>
                       </th>
                       <td>{val.name}</td>
                       <td>{val.phone}</td>

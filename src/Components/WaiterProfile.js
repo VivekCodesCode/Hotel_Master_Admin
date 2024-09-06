@@ -22,9 +22,16 @@ const navigate =useNavigate()
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   async function handleClose_andUpdate(params) {
-    await axios.put("https://hotelloginbackend.onrender.com/api/update_waiter",[Name,waiter_data]).then((res)=>{
+   if(params==="update"){ await axios.put("https://hotelloginbackend.onrender.com/api/update_waiter",[Name,waiter_data]).then((res)=>{
        navigate("/");
     })
+  }
+    else if(params==="delete"){
+      await axios.post("http://localhost:8000/api/delete_waiter",Name).then((res)=>{
+        navigate("/");
+     })
+    }
+  
    
    
   }
@@ -69,7 +76,7 @@ const navigate =useNavigate()
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose_andUpdate}>
+          <Button variant="primary" onClick={()=>handleClose_andUpdate("update")}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -171,8 +178,9 @@ const navigate =useNavigate()
                     <Button 
                      onClick={handleShow}
                     variant="outline-warning" className="mt-2">
-                      Update Savings
+                      Update Waiter
                     </Button>
+                    <Button variant="outline-danger" onClick={()=>{handleClose_andUpdate("delete")}} className='mx-5 my-2'>Remove Waiter</Button>{' '}
                   </Form.Group>
                 </Form>
               </div>
