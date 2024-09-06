@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FaPowerOff } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { IoRefreshCircleSharp } from "react-icons/io5";
+
+import { Link } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
+import { Container, Row, Col, Form, Button, Image, ListGroup } from 'react-bootstrap';
 import '../App.css';
 import { MdDelete } from "react-icons/md";
 import Navbars from './Navbar';
@@ -60,8 +65,39 @@ function Tables() {
    <>
    <Navbars name={name}/>
     <div className="d-flex">
-      
-      
+    <div className="waiter_profile_sidebar w-10" style={{ backgroundColor: "black" }}>
+          <div className="waiter_profile_sidebar-item active">
+            <img
+              width="40"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4WypskBF6B4F0NUewFgN--4mjiAyCI2_LZA&s"
+              alt="User Profile Icon"
+            />
+          </div>
+
+          <div className="waiter_profile_sidebar-item active">
+            <Link to="/">
+              <img
+                width="40"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGkxkQwj4nKJq7wzVgcq1QNjAEv0FPxwC_4g&s"
+                alt="User Profile Icon"
+              />
+            </Link>
+          </div>
+          <div className="waiter_profile_sidebar-item active">
+            <img
+              width="40"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTBqPGnBVxNcciJClCawl8fnZovFiRoc-c3g&s"
+              alt="User Profile Icon"
+            />
+          </div>
+          <div className="waiter_profile_sidebar-item active">
+            <img
+              width="40"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcXAmtYV3HJHOI5xib00-Ukfh8G4Ji4P69KA&s"
+              alt="User Profile Icon"
+            />
+          </div>
+      </div>
       {/* <div class="sidebar">
 
         <ul class="nav flex-column mt-5">
@@ -130,7 +166,7 @@ function Tables() {
               id="pills-summary-tab"
              style={{cursor:"pointer"}}
             >
-             <button> Refresh</button>
+             <button style={{border:"none",height:"30px"}}> Refresh</button>
             </a>
           </li>
           <li onClick={completed_orders} className="nav-item">

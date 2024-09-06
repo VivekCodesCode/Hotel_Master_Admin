@@ -113,9 +113,13 @@ a {
   background-color: rgb(33, 33, 33) !important;
   color: orange !important;
   font-weight: bolder;
+  height: 50px;
+  padding-top: 5px;
 }
 .navbar_head_admin{
-  color: orange;
+  text-decoration: none !important;
+  color: orange !important;
+  
 }
 .admin_login_button{
   background-color: black !important;

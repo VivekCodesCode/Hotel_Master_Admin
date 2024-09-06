@@ -1,7 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Form, Button, Image, ListGroup, InputGroup } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FaPowerOff } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { faCalendarAlt, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import {
   Header,
   Navbar,
@@ -12,9 +14,9 @@ function Navbars(props) {
        <>
        <Header className="waiter_login_navbar"> 
   <Navbar className="waiter_login_navbar" appearance="inverse">
-    <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between'}}>
+    <div style={{  width: '100%'}}>
       <Navbar.Brand className="navbar_head_admin">CyberInstant</Navbar.Brand>
-   <Navbar.Brand className="navbar_head_admin_name">{props.name}</Navbar.Brand>
+     
     </div>
   </Navbar>
 </Header>
