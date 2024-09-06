@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button, Image, ListGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FaPowerOff } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { faCalendarAlt, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import Navbars from './Navbar';
 import { useSelector } from "react-redux";
 import axios from 'axios';
+import Modal from 'react-bootstrap/Modal';
 
 const WaiterProfile = () => {
   const [waiter_data, set_waiter_data] = useState({
@@ -15,9 +16,16 @@ const WaiterProfile = () => {
     email: "",
     image: "",
   });
-
+  const [show, setShow] = useState(false);
+const navigate =useNavigate()
   const Name = useSelector((state) => state.amount);
-
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  async function handleClose_andUpdate(params) {
+     axios.put("http://localhost:8000/api/update_waiter",[Name,waiter_data]);
+  navigate("/")
+   
+  }
   useEffect(() => {
     function call_api() {
       console.log(Name);
@@ -46,10 +54,24 @@ const WaiterProfile = () => {
   };
 
  async function update_waiter(params) {
-   await axios.put("http://localhost:8000/api/update_waiter",[Name,waiter_data]);
+   //await axios.put("http://localhost:8000/api/update_waiter",[Name,waiter_data]);
   }
   return (
     <>
+     <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose_andUpdate}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
       {/* Header */}
       <Navbars />
       <div className="waiter_profile_maincontainer d-flex">
@@ -145,7 +167,7 @@ const WaiterProfile = () => {
                     <Form.Label className="me-3">Savings</Form.Label>
                     <Form.Control type="text" value="20" className="me-2 waiter_profile-input" />
                     <Button 
-                    onClick={update_waiter}
+                     onClick={handleShow}
                     variant="outline-warning" className="mt-2">
                       Update Savings
                     </Button>
