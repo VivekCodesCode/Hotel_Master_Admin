@@ -7,14 +7,19 @@ import Navbars from './Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
-
+import { bindActionCreators } from "redux";
+import { actionCreators } from "./State/index";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 //Planning,Shopping,discount,package,warehouse,chat,settings
 function Tables() {
   const[waiter_data,set_waiter_data]=useState([])
   const[status,set_status]=useState(Array(69).fill(["Delivery","red"]));
+  const dispatch=useDispatch()
   const [name,set_name]=useState("");
+  const navigate=useNavigate()
   useEffect(()=>{
-     axios.get("http://localhost:8000/api/get_waiters").then((res)=>{
+     axios.get("https://hotelloginbackend.onrender.com/api/get_waiters").then((res)=>{
       set_waiter_data(res.data);
      })
     
@@ -26,8 +31,13 @@ function Tables() {
     }))
    
   }
+  function get_name(name) {
+   navigate("/WaiterProfile")
+   dispatch(actionCreators.set_name(name))
+   
+  }
   function refresh_table(params) {
-    axios.get("http://localhost:8000/api/get_waiters").then((res)=>{
+    axios.get("https://hotelloginbackend.onrender.com/api/get_waiters").then((res)=>{
      // console.log(res.data);
       set_waiter_data(res.data);
     })
@@ -186,10 +196,10 @@ function Tables() {
                       <td>{val.phone}</td>
                       <td><MdDelete style={{cursor:"pointer"}}/></td>
                      
-                      <td>
+                      <td onClick={()=>get_name(val.name)} style={{cursor:"pointer"}}>
                         <span className="badge text-bg-warning mb-0">
                           <i className="fa-regular fa-circle-dot">&nbsp;</i>
-                          Delivered
+                          View Profile
                         </span>
                       </td>
                       <td>$12</td>
