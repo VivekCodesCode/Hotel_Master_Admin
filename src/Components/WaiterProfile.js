@@ -27,7 +27,7 @@ const navigate =useNavigate()
     })
   }
     else if(params==="delete"){
-      await axios.post("http://localhost:8000/api/delete_waiter",Name).then((res)=>{
+      await axios.post("https://hotelloginbackend.onrender.com/api/delete_waiter",Name).then((res)=>{
         navigate("/");
      })
     }
