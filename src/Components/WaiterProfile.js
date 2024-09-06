@@ -22,8 +22,10 @@ const navigate =useNavigate()
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   async function handleClose_andUpdate(params) {
-     axios.put("http://localhost:8000/api/update_waiter",[Name,waiter_data]);
-  navigate("/")
+    await axios.put("https://hotelloginbackend.onrender.com/api/update_waiter",[Name,waiter_data]).then((res)=>{
+       navigate("/");
+    })
+   
    
   }
   useEffect(() => {
@@ -54,7 +56,7 @@ const navigate =useNavigate()
   };
 
  async function update_waiter(params) {
-   //await axios.put("http://localhost:8000/api/update_waiter",[Name,waiter_data]);
+   //await axios.put("https://hotelloginbackend.onrender.com/api/update_waiter",[Name,waiter_data]);
   }
   return (
     <>
