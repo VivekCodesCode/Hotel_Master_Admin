@@ -8,6 +8,7 @@ import Navbars from './Navbar';
 import { useSelector } from "react-redux";
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
+import Sidebar from './Sidebar';
 
 const WaiterProfile = () => {
   const [waiter_data, set_waiter_data] = useState({
@@ -45,6 +46,7 @@ const navigate =useNavigate()
           phone: res.data.phone,
           email: res.data.email,
           image: res.data.image,
+          password:res.data.password
         });
       });
     }
@@ -69,9 +71,9 @@ const navigate =useNavigate()
     <>
      <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Edit Employee</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>Are you sure you want to update {waiter_data.name}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -84,39 +86,7 @@ const navigate =useNavigate()
       {/* Header */}
       <Navbars />
       <div className="waiter_profile_maincontainer d-flex">
-        <div className="waiter_profile_sidebar w-10" style={{ backgroundColor: "black" }}>
-          <div className="waiter_profile_sidebar-item active">
-            <img
-              width="40"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4WypskBF6B4F0NUewFgN--4mjiAyCI2_LZA&s"
-              alt="User Profile Icon"
-            />
-          </div>
-
-          <div className="waiter_profile_sidebar-item active">
-            <Link to="/">
-              <img
-                width="40"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGkxkQwj4nKJq7wzVgcq1QNjAEv0FPxwC_4g&s"
-                alt="User Profile Icon"
-              />
-            </Link>
-          </div>
-          <div className="waiter_profile_sidebar-item active">
-            <img
-              width="40"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTBqPGnBVxNcciJClCawl8fnZovFiRoc-c3g&s"
-              alt="User Profile Icon"
-            />
-          </div>
-          <div className="waiter_profile_sidebar-item active">
-            <img
-              width="40"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcXAmtYV3HJHOI5xib00-Ukfh8G4Ji4P69KA&s"
-              alt="User Profile Icon"
-            />
-          </div>
-        </div>
+        <Sidebar/>
 
         {/* Main Content Area */}
         <Container className="waiter_profile-container mx-30">
@@ -168,8 +138,8 @@ const navigate =useNavigate()
                   </Form.Group>
 
                   <Form.Group controlId="joinedOn" className="mt-3 waiter_profile-formGroup">
-                    <Form.Label>Joined On</Form.Label>
-                    <Form.Control type="text" value="12/12/2022" className="waiter_profile-input" disabled />
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="text" value={waiter_data.password} className="waiter_profile-input" disabled />
                   </Form.Group>
 
                   <Form.Group controlId="savings" className="mt-3 align-items-center waiter_profile-formGroup">

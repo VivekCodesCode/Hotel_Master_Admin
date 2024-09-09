@@ -204,7 +204,7 @@ a {
 .waiter_profile_sidebar{
  
   width: 11vh !important;
-  z-index: 10000 !important;
+
   background-color: rgb(255, 255, 255) !important;
   position: sticky;
   height: 100vh;
@@ -220,4 +220,20 @@ a {
 }
 .waiter_table_pimage{
   border-radius: 20px;
+}
+.waiter_profile_sidebar-item4:hover{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 10px;
+}
+.waiter_profile_sidebar-item3:hover{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 10px;
+}
+.waiter_profile_sidebar-item2:hover{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 10px;
+}
+.waiter_profile_sidebar-item1:hover{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 10px;
 }

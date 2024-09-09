@@ -16,6 +16,7 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "./State/index";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Sidebar from './Sidebar';
 //Planning,Shopping,discount,package,warehouse,chat,settings
 function Tables() {
   const[waiter_data,set_waiter_data]=useState([])
@@ -65,39 +66,7 @@ function Tables() {
    <>
    <Navbars name={name}/>
     <div className="d-flex">
-    <div className="waiter_profile_sidebar w-10" style={{ backgroundColor: "black" }}>
-          <div className="waiter_profile_sidebar-item active">
-            <img
-              width="40"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4WypskBF6B4F0NUewFgN--4mjiAyCI2_LZA&s"
-              alt="User Profile Icon"
-            />
-          </div>
-
-          <div className="waiter_profile_sidebar-item active">
-            <Link to="/">
-              <img
-                width="40"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGkxkQwj4nKJq7wzVgcq1QNjAEv0FPxwC_4g&s"
-                alt="User Profile Icon"
-              />
-            </Link>
-          </div>
-          <div className="waiter_profile_sidebar-item active">
-            <img
-              width="40"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTBqPGnBVxNcciJClCawl8fnZovFiRoc-c3g&s"
-              alt="User Profile Icon"
-            />
-          </div>
-          <div className="waiter_profile_sidebar-item active">
-            <img
-              width="40"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcXAmtYV3HJHOI5xib00-Ukfh8G4Ji4P69KA&s"
-              alt="User Profile Icon"
-            />
-          </div>
-      </div>
+    <Sidebar/>
       {/* <div class="sidebar">
 
         <ul class="nav flex-column mt-5">
@@ -169,19 +138,7 @@ function Tables() {
              <button style={{border:"none",height:"30px"}}> Refresh</button>
             </a>
           </li>
-          <li onClick={completed_orders} className="nav-item">
-            <a
-              className="nav-link"
-              id="pills-completed-tab"
-              data-toggle="pill"
-              href="#pills-completed"
-              role="tab"
-              aria-controls="pills-completed"
-              aria-selected="false"
-            >
-              Completed
-            </a>
-          </li>
+         
          
         </ul>
         <div className="tab-content" id="pills-tabContent">
@@ -202,14 +159,14 @@ function Tables() {
                       }}
                       scope="col"
                     >
-                      ID
+                      Emp Image
                     </th>
-                    <th scope="col">Waiter</th>{
+                    <th scope="col">Employee Name</th>{
                       //This is a table and this is a index...
                     }
-                    <th scope="col">Payment</th>
+                    <th scope="col">Phone number</th>
                     <th scope="col">Delete</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Edit Profile</th>
                     <th scope="col">Status</th>
                    
                    
@@ -238,7 +195,7 @@ function Tables() {
                           View Profile
                         </span>
                       </td>
-                      <td>$12</td>
+                      <td>Active</td>
                      
                     </tr>
                   ))}
