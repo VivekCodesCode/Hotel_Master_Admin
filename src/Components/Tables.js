@@ -126,7 +126,7 @@ function Tables() {
               aria-controls="pills-all"
               aria-selected="false"
             >
-              All Orders
+              All Employees
             </a>
           </li>
           <li className="nav-item" onClick={refresh_table}>

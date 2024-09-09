@@ -18,6 +18,7 @@ const WaiterProfile = () => {
     image: "",
   });
   const [show, setShow] = useState(false);
+  const[popup_name,set_popupname]=useState("")
 const navigate =useNavigate()
   const Name = useSelector((state) => state.amount);
   const handleClose = () => setShow(false);
@@ -48,6 +49,7 @@ const navigate =useNavigate()
           image: res.data.image,
           password:res.data.password
         });
+        set_popupname(res.data.name)
       });
     }
     if (Name) {
@@ -73,7 +75,7 @@ const navigate =useNavigate()
         <Modal.Header closeButton>
           <Modal.Title>Edit Employee</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to update {waiter_data.name}</Modal.Body>
+        <Modal.Body>Are you sure you want to update {popup_name}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
