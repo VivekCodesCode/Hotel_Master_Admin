@@ -32,7 +32,7 @@ function AddWaiter() {
     <>
   
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Add Employee
       </Button>
 
       <Modal show={show} onHide={handleClose}>
