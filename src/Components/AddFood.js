@@ -44,12 +44,13 @@ function AddWaiter() {
 
   }
   async function delete_food(id) {
-    window.location.reload();
+    
    await   axios.post("https://hotelloginbackend.onrender.com/api/delete_food",{ID:id}).then(()=>{
     axios.get("https://hotelloginbackend.onrender.com/api/product").then((res)=>{
-        //console.log(res.data.data.productData)
-        setCardData(()=>res.data.data.productData);
-        console.log(cardData)
+        // //console.log(res.data.data.productData)
+        // setCardData(()=>res.data.data.productData);
+        // console.log(cardData)
+        window.location.reload();
     
        })
    })
