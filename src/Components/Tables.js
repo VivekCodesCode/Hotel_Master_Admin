@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaPowerOff } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { IoRefreshCircleSharp } from "react-icons/io5";
-
+import { Audio } from 'react-loader-spinner'
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import { Container, Row, Col, Form, Button, Image, ListGroup } from 'react-bootstrap';
@@ -17,6 +17,7 @@ import { actionCreators } from "./State/index";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
+import Loader from '../Loader/Loader';
 //Planning,Shopping,discount,package,warehouse,chat,settings
 function Tables() {
   const[waiter_data,set_waiter_data]=useState([])
@@ -108,7 +109,10 @@ function Tables() {
           </li>
         </ul>
       </div> */}
-
+  <div  style={{}} className="login_loader">
+      
+ 
+</div>
       <div className="main-content container-fluid" id="order-container">
         
         <div className="d-flex justify-content-between align-items-center mb-4">
@@ -142,12 +146,14 @@ function Tables() {
          
         </ul>
         <div className="tab-content" id="pills-tabContent">
+        
           <div
             className="tab-pane fade show active"
             id="pills-all"
             role="tabpanel"
             aria-labelledby="pills-all-tab"
           >
+            
             <div className="table-responsive">
               <table className="table project-list-table table-nowrap align-middle table-borderless">
                 <thead>
@@ -159,6 +165,7 @@ function Tables() {
                       }}
                       scope="col"
                     >
+                   
                       Emp Image
                     </th>
                     <th scope="col">Employee Name</th>{
@@ -201,11 +208,12 @@ function Tables() {
                   ))}
                   {
         !waiter_data.length&&(
-          <div className='no_order'>
-          <h1>
-          No Orders Yet!!
-          </h1>
-          </div>
+         
+         <div className="no_order">
+          <Loader />
+        </div>
+         
+         
         )
       }
                 </tbody>

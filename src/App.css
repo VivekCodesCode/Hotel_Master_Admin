@@ -79,13 +79,15 @@ img,
 svg {
   vertical-align: middle;
 }
-.no_order h1{
-  position: absolute;
-  width: 100%;
-text-align: center;
-  background-color: #fcf5f5 !important ;
-  margin-top: 20px;
+.no_order {
+  margin-left: 250%;
+  width: max-content;
+  height:max-content;
 
+}
+.doJlBZ{
+  background-color: #fcf5f5 !important;
+  
 }
 a {
   color: #3b76e1;
